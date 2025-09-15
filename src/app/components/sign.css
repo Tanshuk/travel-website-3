@@ -1,0 +1,285 @@
+.sign-container {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(120deg, #14b8a6 0%, #2563eb 100%);
+}
+
+.sign-card {
+  background: #fff;
+  padding: 2.5rem 2rem;
+  border-radius: 18px;
+  box-shadow: 0 8px 32px rgba(37,99,235,0.12);
+  min-width: 320px;
+  text-align: center;
+}
+
+.sign-card h2 {
+  margin-bottom: 1.5rem;
+  font-family: 'Montserrat', 'Segoe UI', Arial, sans-serif;
+  font-weight: 900;
+  color: #2563eb;
+  font-size: 2rem;
+}
+
+.sign-input {
+  width: 100%;
+  padding: 0.8rem 1rem;
+  margin-bottom: 1rem;
+  border-radius: 8px;
+  border: 1px solid #e0e0e0;
+  font-size: 1rem;
+  font-family: 'Montserrat', 'Segoe UI', Arial, sans-serif;
+}
+
+.sign-btn {
+  width: 100%;
+  padding: 0.8rem 1rem;
+  border-radius: 8px;
+  background: linear-gradient(90deg, #14b8a6 0%, #2563eb 100%);
+  color: #fff;
+  font-weight: 700;
+  font-size: 1.1rem;
+  border: none;
+  cursor: pointer;
+  margin-bottom: 1rem;
+  transition: background 0.2s;
+}
+
+.sign-btn:hover {
+  background: linear-gradient(90deg, #2563eb 0%, #14b8a6 100%);
+}
+
+.sign-toggle {
+  font-size: 0.95rem;
+  color: #333;
+}
+
+.sign-link {
+  background: none;
+  border: none;
+  color: #14b8a6;
+  font-weight: 700;
+  margin-left: 0.5rem;
+  cursor: pointer;
+  text-decoration: underline;
+  font-family: inherit;
+  font-size: 1rem;
+}
+
+.sign-modal {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.sign-modal-bg {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.5);
+}
+
+.sign-modal-content {
+  position: relative;
+  z-index: 2;
+}
+
+.sign-modal-close {
+  position: absolute;
+  top: 12px;
+  right: 18px;
+  background: none;
+  border: none;
+  font-size: 2rem;
+  color: #2563eb;
+  cursor: pointer;
+  z-index: 3;
+}
+
+.sign-container {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(120deg, #14b8a6 0%, #2563eb 100%);
+}
+
+.sign-card {
+  background: #fff;
+  padding: 2.5rem 2rem;
+  border-radius: 22px;
+  box-shadow: 0 8px 32px rgba(37,99,235,0.18);
+  min-width: 340px;
+  text-align: center;
+  position: relative;
+  animation: popIn 0.6s cubic-bezier(.86,-0.01,.15,1.01);
+}
+
+@keyframes popIn {
+  0% { transform: scale(0.8); opacity: 0; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+.sign-card h2 {
+  margin-bottom: 1.5rem;
+  font-family: 'Montserrat', 'Segoe UI', Arial, sans-serif;
+  font-weight: 900;
+  color: #2563eb;
+  font-size: 2rem;
+  letter-spacing: 1px;
+}
+
+.sign-input {
+  width: 100%;
+  padding: 0.8rem 1rem;
+  margin-bottom: 1rem;
+  border-radius: 10px;
+  border: 1px solid #e0e0e0;
+  font-size: 1rem;
+  font-family: 'Montserrat', 'Segoe UI', Arial, sans-serif;
+  background: #f7faff;
+  transition: border 0.2s;
+}
+
+.sign-input:focus {
+  border: 1.5px solid #14b8a6;
+  outline: none;
+}
+
+.sign-btn {
+  width: 100%;
+  padding: 0.8rem 1rem;
+  border-radius: 10px;
+  background: linear-gradient(90deg, #14b8a6 0%, #2563eb 100%);
+  color: #fff;
+  font-weight: 700;
+  font-size: 1.1rem;
+  border: none;
+  cursor: pointer;
+  margin-bottom: 1rem;
+  transition: background 0.2s, transform 0.2s;
+  box-shadow: 0 2px 8px rgba(37,99,235,0.10);
+}
+
+.sign-btn:hover {
+  background: linear-gradient(90deg, #2563eb 0%, #14b8a6 100%);
+  transform: scale(1.04);
+}
+
+.sign-toggle {
+  font-size: 1rem;
+  color: #333;
+}
+
+.sign-link {
+  background: none;
+  border: none;
+  color: #14b8a6;
+  font-weight: 700;
+  margin-left: 0.5rem;
+  cursor: pointer;
+  text-decoration: underline;
+  font-family: inherit;
+  font-size: 1rem;
+  transition: color 0.2s;
+}
+
+.sign-link:hover {
+  color: #2563eb;
+}
+
+.sign-container {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(120deg, #14b8a6 0%, #2563eb 100%);
+}
+
+.sign-card {
+  background: #fff;
+  padding: 2.5rem 2rem;
+  border-radius: 22px;
+  box-shadow: 0 8px 32px rgba(37,99,235,0.18);
+  min-width: 340px;
+  text-align: center;
+  position: relative;
+  animation: popIn 0.6s cubic-bezier(.86,-0.01,.15,1.01);
+}
+
+@keyframes popIn {
+  0% { transform: scale(0.8); opacity: 0; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+.sign-card h2 {
+  margin-bottom: 1.5rem;
+  font-family: 'Montserrat', 'Segoe UI', Arial, sans-serif;
+  font-weight: 900;
+  color: #2563eb;
+  font-size: 2rem;
+  letter-spacing: 1px;
+}
+
+.sign-input {
+  width: 100%;
+  padding: 0.8rem 1rem;
+  margin-bottom: 1rem;
+  border-radius: 10px;
+  border: 1px solid #e0e0e0;
+  font-size: 1rem;
+  font-family: 'Montserrat', 'Segoe UI', Arial, sans-serif;
+  background: #f7faff;
+  transition: border 0.2s;
+}
+
+.sign-input:focus {
+  border: 1.5px solid #14b8a6;
+  outline: none;
+}
+
+.sign-btn {
+  width: 100%;
+  padding: 0.8rem 1rem;
+  border-radius: 10px;
+  background: linear-gradient(90deg, #14b8a6 0%, #2563eb 100%);
+  color: #fff;
+  font-weight: 700;
+  font-size: 1.1rem;
+  border: none;
+  cursor: pointer;
+  margin-bottom: 1rem;
+  transition: background 0.2s, transform 0.2s;
+  box-shadow: 0 2px 8px rgba(37,99,235,0.10);
+}
+
+.sign-btn:hover {
+  background: linear-gradient(90deg, #2563eb 0%, #14b8a6 100%);
+  transform: scale(1.04);
+}
+
+.sign-toggle {
+  font-size: 1rem;
+  color: #333;
+}
+
+.sign-link {
+  background: none;
+  border: none;
+  color: #14b8a6;
+  font-weight: 700;
+  margin-left: 0.5rem;
+  cursor: pointer;
+  text-decoration: underline;
+  font-family: inherit;
+  font-size: 1rem;
+  transition: color 0.2s;
+}
+
+.sign-link:hover {
+  color: #2563eb;
+}

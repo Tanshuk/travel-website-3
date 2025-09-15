@@ -1,0 +1,74 @@
+.navbar {
+  width: 100%;
+  background: linear-gradient(90deg, #2563eb 0%, #14b8a6 100%);
+  box-shadow: 0 4px 24px rgba(20,184,166,0.15);
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 20;
+  font-family: 'Montserrat', 'Segoe UI', Arial, sans-serif;
+}
+
+.navbar-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1rem 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.navbar-logo {
+  font-size: 2.2rem;
+  font-weight: 900;
+  color: #fff;
+  letter-spacing: 2px;
+  text-shadow: 0 2px 12px rgba(0,0,0,0.2);
+  font-family: 'Montserrat', 'Segoe UI', Arial, sans-serif;
+}
+
+.navbar-links {
+  display: flex;
+  gap: 2rem;
+  font-size: 1.15rem;
+  font-weight: 600;
+}
+
+.navbar-links a {
+  color: #fff;
+  text-decoration: none;
+  padding: 0.5rem 1.2rem;
+  border-radius: 30px;
+  transition: background 0.2s, color 0.2s, transform 0.2s;
+  font-family: 'Montserrat', 'Segoe UI', Arial, sans-serif;
+}
+
+.navbar-links a:hover {
+  background: linear-gradient(90deg, #14b8a6 0%, #2563eb 100%);
+  color: #ffe066;
+  transform: scale(1.08);
+  box-shadow: 0 4px 16px rgba(37,99,235,0.15);
+}
+
+.navbar-auth {
+  display: flex;
+  gap: 1rem;
+}
+
+.navbar-sign-btn {
+  padding: 0.5rem 1.2rem;
+  border-radius: 30px;
+  background: linear-gradient(90deg, #14b8a6 0%, #2563eb 100%);
+  color: #fff;
+  font-weight: 700;
+  text-decoration: none;
+  transition: background 0.2s, transform 0.2s;
+  font-family: 'Montserrat', 'Segoe UI', Arial, sans-serif;
+  box-shadow: 0 2px 8px rgba(37,99,235,0.10);
+}
+
+.navbar-sign-btn:hover {
+  background: linear-gradient(90deg, #2563eb 0%, #14b8a6 100%);
+  transform: scale(1.08);
+  color: #ffe066;
+}

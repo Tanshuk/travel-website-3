@@ -1,0 +1,138 @@
+.place-section {
+  padding: 4rem 1rem;
+  background: linear-gradient(120deg, #f7faff 0%, #e0f7fa 100%);
+  min-height: 100vh;
+  font-family: 'Montserrat', 'Segoe UI', Arial, sans-serif;
+}
+
+.place-title {
+  text-align: center;
+  font-size: 2.5rem;
+  font-weight: 900;
+  color: #2563eb;
+  margin-bottom: 2rem;
+  letter-spacing: 2px;
+}
+
+.place-tabs {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+}
+
+.place-tab {
+  background: #fff;
+  border: 2px solid #14b8a6;
+  color: #2563eb;
+  font-weight: 700;
+  padding: 0.7rem 1.5rem;
+  border-radius: 30px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background 0.2s, color 0.2s, border 0.2s, transform 0.2s;
+  box-shadow: 0 2px 8px rgba(37,99,235,0.10);
+}
+
+.place-tab.active,
+.place-tab:hover {
+  background: linear-gradient(90deg, #14b8a6 0%, #2563eb 100%);
+  color: #fff;
+  border-color: #2563eb;
+  transform: scale(1.07);
+}
+
+.place-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: #fff;
+  border-radius: 22px;
+  box-shadow: 0 8px 32px rgba(37,99,235,0.12);
+  padding: 2rem;
+  max-width: 700px;
+  margin: 0 auto;
+  animation: fadeIn 0.7s cubic-bezier(.86,-0.01,.15,1.01);
+}
+
+@keyframes fadeIn {
+  0% { opacity: 0; transform: translateY(40px);}
+  100% { opacity: 1; transform: translateY(0);}
+}
+
+.place-img {
+  width: 100%;
+  max-width: 400px;
+  border-radius: 18px;
+  box-shadow: 0 4px 16px rgba(20,184,166,0.15);
+  margin-bottom: 1.5rem;
+  transition: transform 0.4s cubic-bezier(.86,-0.01,.15,1.01);
+}
+
+.place-card:hover .place-img {
+  transform: scale(1.04) rotate(-2deg);
+}
+
+.place-info {
+  text-align: left;
+  width: 100%;
+}
+
+.place-name {
+  font-size: 2rem;
+  font-weight: 800;
+  color: #14b8a6;
+  margin-bottom: 0.5rem;
+}
+
+.place-desc {
+  font-size: 1.1rem;
+  color: #333;
+  margin-bottom: 1rem;
+}
+
+.place-meta {
+  display: flex;
+  gap: 2rem;
+  margin-bottom: 1rem;
+  font-size: 1rem;
+  color: #2563eb;
+  font-weight: 700;
+}
+
+.place-reviews {
+  margin-top: 1rem;
+}
+
+.place-reviews h4 {
+  font-size: 1.1rem;
+  color: #14b8a6;
+  margin-bottom: 0.5rem;
+}
+
+.place-review {
+  background: #e0f7fa;
+  border-radius: 10px;
+  padding: 0.7rem 1rem;
+  margin-bottom: 0.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  font-size: 1rem;
+}
+
+.review-user {
+  font-weight: 700;
+  color: #2563eb;
+}
+
+.review-rating {
+  color: #ffb300;
+  font-weight: 700;
+}
+
+.review-comment {
+  color: #333;
+  font-style: italic;
+}

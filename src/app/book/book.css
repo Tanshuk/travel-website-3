@@ -1,0 +1,80 @@
+.book-section {
+  padding: 4rem 1rem;
+  background: linear-gradient(120deg, #f7faff 0%, #e0f7fa 100%);
+  font-family: 'Montserrat', 'Segoe UI', Arial, sans-serif;
+}
+
+.book-container {
+  max-width: 600px;
+  margin: 0 auto;
+  background: #6cbee7;
+  border-radius: 22px;
+  box-shadow: 0 8px 32px rgba(37,99,235,0.12);
+  padding: 2.5rem 2rem;
+}
+
+.book-title {
+  font-size: 2rem;
+  font-weight: 900;
+  color: #2563eb;
+  margin-bottom: 2rem;
+  text-align: center;
+  letter-spacing: 2px;
+}
+
+.book-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.book-input {
+  width: 100%;
+  padding: 0.7rem 1rem;
+  border-radius: 10px;
+  border: 1px solid #861a1a;
+  font-size: 1rem;
+  background: #6790d7;
+  margin-top: 0.3rem;
+  font-family: inherit;
+  transition: border 0.2s;
+}
+
+.book-input:focus {
+  border: 1.5px solid #14b8a6;
+  outline: none;
+}
+
+.book-btn {
+  padding: 0.9rem 1.5rem;
+  border-radius: 10px;
+  background: linear-gradient(90deg, #14b8a6 0%, #2563eb 100%);
+  color: #100303;
+  font-weight: 700;
+  font-size: 1.1rem;
+  border: none;
+  cursor: pointer;
+  margin-top: 1rem;
+  transition: background 0.2s, transform 0.2s;
+  box-shadow: 0 2px 8px rgba(37,99,235,0.10);
+}
+
+.book-btn:hover {
+  background: linear-gradient(90deg, #2563eb 0%, #14b8a6 100%);
+  transform: scale(1.04);
+}
+
+.book-result {
+  margin-top: 2rem;
+  text-align: center;
+  background: #000607;
+  border-radius: 14px;
+  padding: 1.5rem 1rem;
+  box-shadow: 0 2px 8px rgba(20,184,166,0.10);
+}
+
+.book-result h3 {
+  color: #14b8a6;
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+}

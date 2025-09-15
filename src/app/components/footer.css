@@ -1,0 +1,107 @@
+.footer-section {
+  background: linear-gradient(90deg, #2563eb 0%, #14b8a6 100%);
+  color: #fff;
+  padding: 2.5rem 1rem 1.2rem 1rem;
+  font-family: 'Montserrat', 'Segoe UI', Arial, sans-serif;
+}
+
+.footer-container {
+  max-width: 900px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.footer-logo {
+  font-size: 2.2rem;
+  font-weight: 900;
+  letter-spacing: 2px;
+  margin-bottom: 0.7rem;
+  font-family: 'Montserrat', 'Segoe UI', Arial, sans-serif;
+}
+
+.footer-desc {
+  font-size: 1.1rem;
+  margin-bottom: 1.2rem;
+  font-family: 'Montserrat', 'Segoe UI', Arial, sans-serif;
+}
+
+.footer-links {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  margin-bottom: 1.2rem;
+  font-size: 1rem;
+}
+
+.footer-links a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 700;
+  transition: color 0.2s;
+  font-family: 'Montserrat', 'Segoe UI', Arial, sans-serif;
+}
+
+.footer-links a:hover {
+  color: #ffe066;
+  text-decoration: underline;
+}
+
+.footer-social {
+  display: flex;
+  justify-content: center;
+  gap: 1.2rem;
+  font-size: 1.5rem;
+  margin-bottom: 1.2rem;
+}
+
+.footer-social a {
+  color: #fff;
+  transition: color 0.2s, transform 0.2s;
+}
+
+.footer-social a:hover {
+  color: #ffe066;
+  transform: scale(1.2);
+}
+
+.footer-copy {
+  font-size: 0.95rem;
+  color: #e0e0e0;
+  margin-top: 0.5rem;
+  font-family: 'Montserrat', 'Segoe UI', Arial, sans-serif;
+}
+
+.footer-contact {
+  margin: 1.2rem 0;
+  font-size: 1rem;
+  color: #fff;
+}
+
+.footer-contact h4 {
+  margin-bottom: 0.5rem;
+  font-size: 1.1rem;
+  color: #ffe066;
+}
+
+.footer-contact a {
+  color: #ffe066;
+  text-decoration: underline;
+}
+
+.footer-social {
+  display: flex;
+  justify-content: center;
+  gap: 1.2rem;
+  font-size: 1.7rem;
+  margin-bottom: 1.2rem;
+}
+
+.footer-social a {
+  color: #fff;
+  transition: color 0.2s, transform 0.2s;
+}
+
+.footer-social a:hover {
+  color: #ffe066;
+  transform: scale(1.2);
+}
