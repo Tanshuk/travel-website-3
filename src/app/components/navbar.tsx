@@ -2,11 +2,13 @@
 import React, { useState } from "react";
 import Logo from "./logo";
 import Sign from "./sign";
+
 import Link from "next/link";
 import "./navbar.css";
 
 const Navbar = () => {
   const [showSign, setShowSign] = useState(false);
+  const [showChatbot, setShowChatbot] = useState(false);
 
   return (
     <>
@@ -21,9 +23,9 @@ const Navbar = () => {
               <a href="#about">About</a>
             </li>
             <li>
-               <Link href="/book" className="navbar-link">
-      Book
-    </Link>
+              <Link href="/book" className="navbar-link">
+                Book
+              </Link>
             </li>
             <li>
               <Link href="/place" className="navbar-link">
@@ -31,7 +33,9 @@ const Navbar = () => {
               </Link>
             </li>
             <li>
-              <a href="#contact">Contact</a>
+              <Link href="/contact" className="navbar-link">
+                Contact
+              </Link>
             </li>
           </ul>
           <div className="navbar-auth">
@@ -40,6 +44,12 @@ const Navbar = () => {
               onClick={() => setShowSign(true)}
             >
               Sign In / Sign Up
+            </button>
+            <button
+              className="navbar-chatbot-btn"
+              onClick={() => setShowChatbot(true)}
+            >
+              Travel AI
             </button>
           </div>
         </div>
@@ -56,6 +66,21 @@ const Navbar = () => {
               &times;
             </button>
             <Sign />
+          </div>
+        </div>
+      )}
+      {showChatbot && (
+        <div className="chatbot-modal">
+          <div className="chatbot-modal-bg" onClick={() => setShowChatbot(false)} />
+          <div className="chatbot-modal-content">
+            <button
+              className="chatbot-modal-close"
+              onClick={() => setShowChatbot(false)}
+              aria-label="Close Chatbot"
+            >
+              &times;
+            </button>
+            
           </div>
         </div>
       )}

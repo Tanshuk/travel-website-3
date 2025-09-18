@@ -1,18 +1,18 @@
 "use client";
-import React, { useState, useEffect, useCallback } from "react";
-import debounce from "lodash/debounce";
-import "./place.css";
+import React, { useState, useEffect } from "react";
+import "./contact.css";
 
+// Reusing the same places array as in Place.tsx and Book.tsx
 const places = [
   {
     country: "India",
     name: "Taj Mahal",
     images: [
-      "https://images.pexels.com/photos/28749616/pexels-photo-28749616.jpeg",
-      "https://images.pexels.com/photos/28762052/pexels-photo-28762052.jpeg",
-      "https://images.pexels.com/photos/29172418/pexels-photo-29172418.jpeg",
-      "https://images.pexels.com/photos/12412167/pexels-photo-12412167.jpeg",
-      "https://images.pexels.com/photos/28762054/pexels-photo-28762054.jpeg10-e0cd71810b5f?auto=format&fit=crop&w=800&q=80"
+      "https://images.unsplash.com/photo-1504198453319-5ce911bafcde?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1521651201144-634f700b36ef?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1564507592333-cde813829a11?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1515003197210-e0cd71810b5f?auto=format&fit=crop&w=800&q=80"
     ],
     description: "A symbol of love and one of the most visited monuments in the world.",
     short: "Iconic marble mausoleum.",
@@ -444,137 +444,234 @@ const places = [
   }
 ];
 
-const Place = () => {
-  const [search, setSearch] = useState("");
-  const [selected, setSelected] = useState(0);
-  const [imgIndex, setImgIndex] = useState(0);
-  const [imgError, setImgError] = useState(false);
+const Contact = () => {
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [phone, setPhone] = useState("");
+  const [subject, setSubject] = useState("");
+  const [message, setMessage] = useState("");
+  const [inquiryType, setInquiryType] = useState("");
+  const [relatedDestination, setRelatedDestination] = useState("");
+  const [contactMethod, setContactMethod] = useState("email");
+  const [errors, setErrors] = useState<{ [key: string]: string }>({});
+  const [contactResult, setContactResult] = useState<string | null>(null);
 
-  // Debounced search handler
-  const handleSearch = useCallback(
-    debounce((value) => {
-      setSearch(value);
-      setSelected(0);
-    }, 300),
-    []
-  );
+  const validateForm = () => {
+    const newErrors: { [key: string]: string } = {};
+    if (!name.trim()) newErrors.name = "Name is required";
+    if (!email.trim()) {
+      newErrors.email = "Email is required";
+    } else if (!/\S+@\S+\.\S+/.test(email)) {
+      newErrors.email = "Invalid email format";
+    }
+    if (!subject.trim()) newErrors.subject = "Subject is required";
+    if (!message.trim()) newErrors.message = "Message is required";
+    if (!inquiryType) newErrors.inquiryType = "Please select an inquiry type";
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
 
-  // Filter places by search term (country/name)
-  const filteredPlaces = places.filter(
-    (place) =>
-      place.name.toLowerCase().includes(search.toLowerCase()) ||
-      place.country.toLowerCase().includes(search.toLowerCase())
-  );
-
-  // Reset image index when selected place changes
   useEffect(() => {
-    setImgIndex(0);
-    setImgError(false);
-  }, [selected]);
+    // Reset errors when user starts typing
+    setErrors({});
+  }, [name, email, subject, message, inquiryType]);
 
-  // Carousel navigation
-  const prevImg = () =>
-    setImgIndex((i) =>
-      i === 0 ? filteredPlaces[selected].images.length - 1 : i - 1
-    );
-  const nextImg = () =>
-    setImgIndex((i) =>
-      i === filteredPlaces[selected].images.length - 1 ? 0 : i + 1
-    );
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!validateForm()) {
+      return;
+    }
+
+    // Mock support ticket number
+    const ticketNumber = `SUP-${Math.random().toString(36).substring(2, 8).toUpperCase()}`;
+    let result = `Thank you, ${name}! Your inquiry has been submitted. Support Ticket: ${ticketNumber}. `;
+    result += `We'll contact you via ${contactMethod} within 24-48 hours. `;
+    if (relatedDestination) {
+      const selectedPlace = places.find(
+        (place) => `${place.country} - ${place.name}` === relatedDestination
+      );
+      if (selectedPlace) {
+        result += `Regarding: ${relatedDestination}. Special: ${selectedPlace.specialThing}. `;
+      }
+    }
+    setContactResult(result);
+
+    // Reset form
+    setName("");
+    setEmail("");
+    setPhone("");
+    setSubject("");
+    setMessage("");
+    setInquiryType("");
+    setRelatedDestination("");
+    setContactMethod("email");
+  };
 
   return (
-    <section className="place-section">
-      <h2 className="place-title">Top Travel Destinations</h2>
-      <input
-        className="place-search"
-        type="text"
-        placeholder="Search country or place..."
-        onChange={(e) => handleSearch(e.target.value)}
-      />
-      <div className="place-tabs">
-        {filteredPlaces.length === 0 && (
-          <div className="place-not-found">
-            No places found. Try searching for "Italy" or "Paris"!
-          </div>
-        )}
-        {filteredPlaces.map((place, idx) => (
-          <button
-            key={`${place.country}-${place.name}`}
-            className={`place-tab${selected === idx ? " active" : ""}`}
-            onClick={() => setSelected(idx)}
-          >
-            <span className="place-tab-short">{place.short}</span>
-            <span>
-              {place.country} - {place.name}
-            </span>
-          </button>
-        ))}
-      </div>
-      {filteredPlaces.length > 0 && (
-        <div className="place-card">
-          <div className="place-carousel">
-            <button
-              className="carousel-arrow left"
-              onClick={prevImg}
-              aria-label="Previous image"
-            >
-              &#8249;
-            </button>
-            {imgError ? (
-              <div className="place-img-error">Image failed to load</div>
-            ) : (
-              <img
-                src={filteredPlaces[selected].images[imgIndex]}
-                alt={filteredPlaces[selected].name}
-                className="place-img"
-                onError={() => setImgError(true)}
-              />
-            )}
-            <button
-              className="carousel-arrow right"
-              onClick={nextImg}
-              aria-label="Next image"
-            >
-              &#8250;
-            </button>
-            <div className="carousel-dots">
-              {filteredPlaces[selected].images.map((_, i) => (
-                <span
-                  key={i}
-                  className={`carousel-dot${imgIndex === i ? " active" : ""}`}
-                  onClick={() => setImgIndex(i)}
-                  aria-label={`Go to image ${i + 1}`}
-                />
-              ))}
-            </div>
-          </div>
-          <div className="place-info">
-            <h3 className="place-name">{filteredPlaces[selected].name}</h3>
-            <div className="place-desc">{filteredPlaces[selected].description}</div>
-            <div className="place-meta">
-              <span className="place-rating">⭐ {filteredPlaces[selected].avgRating} / 5</span>
-              <span className="place-visitors">{filteredPlaces[selected].visitors} visitors/year</span>
-            </div>
-            <div className="place-details">
-              <h4>Ticket Price</h4>
-              <p>{filteredPlaces[selected].ticketPrice}</p>
-              <h4>Special Thing</h4>
-              <p>{filteredPlaces[selected].specialThing}</p>
-              <h4>Direct Booking</h4>
-              <a
-                href={filteredPlaces[selected].bookingUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="booking-button"
-              >
-                Book Now
-              </a>
-            </div>
+    <section className="contact-section">
+      <div className="contact-container">
+        <h2 className="contact-title">Get in Touch</h2>
+
+        {/* Contact Info Section */}
+        <div className="contact-info-card">
+          <h3 className="contact-section-title">Contact Information</h3>
+          <div className="contact-info">
+            <p><span className="contact-icon">📧</span> Email: support@luxurytravel.com</p>
+            <p><span className="contact-icon">📞</span> Phone: +1-800-TRAVEL (872-835)</p>
+            <p><span className="contact-icon">📍</span> Address: 123 Wanderlust Ave, Globe City, World</p>
+            <p><span className="contact-icon">⏰</span> Hours: 24/7 Customer Support</p>
           </div>
         </div>
-      )}
+
+        {/* Contact Form Section */}
+        <div className="contact-form-card">
+          <h3 className="contact-section-title">Send Us a Message</h3>
+          <form className="contact-form" onSubmit={handleSubmit}>
+            <div className="contact-field">
+              <label htmlFor="name" className="contact-label">
+                Full Name
+              </label>
+              <input
+                id="name"
+                type="text"
+                className={`contact-input ${errors.name ? "contact-input-error" : ""}`}
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+                placeholder="Enter your full name"
+              />
+              {errors.name && <span className="contact-error">{errors.name}</span>}
+            </div>
+            <div className="contact-field">
+              <label htmlFor="email" className="contact-label">
+                Email Address
+              </label>
+              <input
+                id="email"
+                type="email"
+                className={`contact-input ${errors.email ? "contact-input-error" : ""}`}
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                placeholder="Enter your email"
+              />
+              {errors.email && <span className="contact-error">{errors.email}</span>}
+            </div>
+            <div className="contact-field">
+              <label htmlFor="phone" className="contact-label">
+                Phone Number (Optional)
+              </label>
+              <input
+                id="phone"
+                type="tel"
+                className="contact-input"
+                value={phone}
+                onChange={(e) => setPhone(e.target.value)}
+                placeholder="Enter your phone number"
+              />
+            </div>
+            <div className="contact-field">
+              <label htmlFor="subject" className="contact-label">
+                Subject
+              </label>
+              <input
+                id="subject"
+                type="text"
+                className={`contact-input ${errors.subject ? "contact-input-error" : ""}`}
+                value={subject}
+                onChange={(e) => setSubject(e.target.value)}
+                placeholder="Enter the subject of your inquiry"
+              />
+              {errors.subject && <span className="contact-error">{errors.subject}</span>}
+            </div>
+            <div className="contact-field">
+              <label htmlFor="inquiryType" className="contact-label">
+                Inquiry Type
+              </label>
+              <select
+                id="inquiryType"
+                className={`contact-input ${errors.inquiryType ? "contact-input-error" : ""}`}
+                value={inquiryType}
+                onChange={(e) => setInquiryType(e.target.value)}
+              >
+                <option value="" disabled>
+                  Select inquiry type
+                </option>
+                <option value="General">General Inquiry</option>
+                <option value="Booking Support">Booking Support</option>
+                <option value="Custom Tour">Custom Tour Request</option>
+              </select>
+              {errors.inquiryType && <span className="contact-error">{errors.inquiryType}</span>}
+            </div>
+            <div className="contact-field">
+              <label htmlFor="relatedDestination" className="contact-label">
+                Related Destination (Optional)
+              </label>
+              <select
+                id="relatedDestination"
+                className="contact-input"
+                value={relatedDestination}
+                onChange={(e) => setRelatedDestination(e.target.value)}
+              >
+                <option value="">Select a destination (optional)</option>
+                {places.map((place) => (
+                  <option key={`${place.country}-${place.name}`} value={`${place.country} - ${place.name}`}>
+                    {place.country} - {place.name}
+                  </option>
+                ))}
+              </select>
+            </div>
+            <div className="contact-field">
+              <label className="contact-label">Preferred Contact Method</label>
+              <div className="contact-radio-group">
+                <label className="contact-radio">
+                  <input
+                    type="radio"
+                    value="email"
+                    checked={contactMethod === "email"}
+                    onChange={(e) => setContactMethod(e.target.value)}
+                  />
+                  Email
+                </label>
+                <label className="contact-radio">
+                  <input
+                    type="radio"
+                    value="phone"
+                    checked={contactMethod === "phone"}
+                    onChange={(e) => setContactMethod(e.target.value)}
+                  />
+                  Phone
+                </label>
+              </div>
+            </div>
+            <div className="contact-field">
+              <label htmlFor="message" className="contact-label">
+                Message
+              </label>
+              <textarea
+                id="message"
+                className={`contact-input contact-textarea ${errors.message ? "contact-input-error" : ""}`}
+                value={message}
+                onChange={(e) => setMessage(e.target.value)}
+                placeholder="Enter your message or inquiry details"
+                rows={5}
+              />
+              {errors.message && <span className="contact-error">{errors.message}</span>}
+            </div>
+            <button type="submit" className="contact-btn">
+              Submit Inquiry
+            </button>
+          </form>
+        </div>
+
+        {/* Confirmation Section */}
+        {contactResult && (
+          <div className="contact-result">
+            <h3 className="contact-section-title">Inquiry Submitted</h3>
+            <p>{contactResult}</p>
+          </div>
+        )}
+      </div>
     </section>
   );
 };
 
-export default Place;
+export default Contact;

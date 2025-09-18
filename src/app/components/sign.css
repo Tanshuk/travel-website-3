@@ -1,285 +1,166 @@
+:root {
+  --primary: #14b8a6;
+  --secondary: #2563eb;
+  --bg-light: #f7faff;
+  --shadow: 0 8px 32px rgba(20, 184, 166, 0.15);
+}
+
 .sign-container {
-  min-height: 100vh;
   display: flex;
-  align-items: center;
   justify-content: center;
-  background: linear-gradient(120deg, #14b8a6 0%, #2563eb 100%);
+  align-items: center;
+  padding: 2rem;
 }
 
 .sign-card {
-  background: #fff;
-  padding: 2.5rem 2rem;
-  border-radius: 18px;
-  box-shadow: 0 8px 32px rgba(37,99,235,0.12);
-  min-width: 320px;
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 20px;
+  padding: 2rem;
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  max-width: 400px;
+  width: 100%;
   text-align: center;
+  font-family: 'Montserrat', 'Segoe UI', Arial, sans-serif;
+  animation: fadeIn 0.3s ease-out;
 }
 
 .sign-card h2 {
-  margin-bottom: 1.5rem;
-  font-family: 'Montserrat', 'Segoe UI', Arial, sans-serif;
-  font-weight: 900;
-  color: #2563eb;
   font-size: 2rem;
+  font-weight: 900;
+  color: var(--secondary);
+  margin-bottom: 1.5rem;
+  letter-spacing: 1px;
+}
+
+.sign-field {
+  margin-bottom: 1.2rem;
 }
 
 .sign-input {
   width: 100%;
-  padding: 0.8rem 1rem;
-  margin-bottom: 1rem;
-  border-radius: 8px;
-  border: 1px solid #e0e0e0;
+  padding: 0.8rem 1.2rem;
+  border-radius: 12px;
+  border: 1px solid #0d0d0d;
   font-size: 1rem;
+  background: #a1e3e2;
   font-family: 'Montserrat', 'Segoe UI', Arial, sans-serif;
+  transition: border 0.2s, box-shadow 0.2s;
 }
 
-.sign-btn {
+.sign-input:focus {
+  border: 1.5px solid var(--primary);
+  outline: none;
+  box-shadow: 0 2px 8px rgba(20, 184, 166, 0.2);
+}
+
+.sign-input-error {
+  border: 1.5px solid #e63946;
+}
+
+.sign-error {
+  color: #e63946;
+  font-size: 0.9rem;
+  margin-top: 0.3rem;
+  display: block;
+}
+
+.sign-btn, .sign-google-btn {
   width: 100%;
-  padding: 0.8rem 1rem;
-  border-radius: 8px;
-  background: linear-gradient(90deg, #14b8a6 0%, #2563eb 100%);
-  color: #fff;
+  padding: 0.8rem;
+  border-radius: 12px;
+  background: linear-gradient(90deg, var(--primary) 0%, var(--secondary) 100%);
+  color: #ffffff;
   font-weight: 700;
   font-size: 1.1rem;
   border: none;
   cursor: pointer;
-  margin-bottom: 1rem;
-  transition: background 0.2s;
+  transition: background 0.3s, transform 0.3s, box-shadow 0.3s;
+  margin: 0.5rem 0;
+  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.2);
 }
 
-.sign-btn:hover {
-  background: linear-gradient(90deg, #2563eb 0%, #14b8a6 100%);
+.sign-btn:hover, .sign-google-btn:hover {
+  background: linear-gradient(90deg, var(--secondary) 0%, var(--primary) 100%);
+  transform: scale(1.05);
+  box-shadow: 0 8px 24px rgba(37, 99, 235, 0.3);
+}
+
+.sign-google-btn {
+  background: #ffffff;
+  color: #222;
+  border: 1px solid #e0e0e0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.sign-google-btn::before {
+  content: url("https://www.google.com/favicon.ico");
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+}
+
+.sign-google-btn:hover {
+  background: var(--bg-light);
+}
+
+.sign-message {
+  margin: 1rem 0;
+  padding: 1rem;
+  border-radius: 12px;
+  background: rgba(20, 184, 166, 0.1);
+  color: var(--secondary);
+  font-size: 1rem;
 }
 
 .sign-toggle {
+  margin-top: 1rem;
   font-size: 0.95rem;
-  color: #333;
+  color: #222;
 }
 
 .sign-link {
   background: none;
   border: none;
-  color: #14b8a6;
-  font-weight: 700;
-  margin-left: 0.5rem;
+  color: var(--primary);
+  font-weight: 600;
   cursor: pointer;
   text-decoration: underline;
-  font-family: inherit;
-  font-size: 1rem;
-}
-
-.sign-modal {
-  position: fixed;
-  top: 0; left: 0; right: 0; bottom: 0;
-  z-index: 1000;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.sign-modal-bg {
-  position: absolute;
-  inset: 0;
-  background: rgba(0,0,0,0.5);
-}
-
-.sign-modal-content {
-  position: relative;
-  z-index: 2;
-}
-
-.sign-modal-close {
-  position: absolute;
-  top: 12px;
-  right: 18px;
-  background: none;
-  border: none;
-  font-size: 2rem;
-  color: #2563eb;
-  cursor: pointer;
-  z-index: 3;
-}
-
-.sign-container {
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: linear-gradient(120deg, #14b8a6 0%, #2563eb 100%);
-}
-
-.sign-card {
-  background: #fff;
-  padding: 2.5rem 2rem;
-  border-radius: 22px;
-  box-shadow: 0 8px 32px rgba(37,99,235,0.18);
-  min-width: 340px;
-  text-align: center;
-  position: relative;
-  animation: popIn 0.6s cubic-bezier(.86,-0.01,.15,1.01);
-}
-
-@keyframes popIn {
-  0% { transform: scale(0.8); opacity: 0; }
-  100% { transform: scale(1); opacity: 1; }
-}
-
-.sign-card h2 {
-  margin-bottom: 1.5rem;
-  font-family: 'Montserrat', 'Segoe UI', Arial, sans-serif;
-  font-weight: 900;
-  color: #2563eb;
-  font-size: 2rem;
-  letter-spacing: 1px;
-}
-
-.sign-input {
-  width: 100%;
-  padding: 0.8rem 1rem;
-  margin-bottom: 1rem;
-  border-radius: 10px;
-  border: 1px solid #e0e0e0;
-  font-size: 1rem;
-  font-family: 'Montserrat', 'Segoe UI', Arial, sans-serif;
-  background: #f7faff;
-  transition: border 0.2s;
-}
-
-.sign-input:focus {
-  border: 1.5px solid #14b8a6;
-  outline: none;
-}
-
-.sign-btn {
-  width: 100%;
-  padding: 0.8rem 1rem;
-  border-radius: 10px;
-  background: linear-gradient(90deg, #14b8a6 0%, #2563eb 100%);
-  color: #fff;
-  font-weight: 700;
-  font-size: 1.1rem;
-  border: none;
-  cursor: pointer;
-  margin-bottom: 1rem;
-  transition: background 0.2s, transform 0.2s;
-  box-shadow: 0 2px 8px rgba(37,99,235,0.10);
-}
-
-.sign-btn:hover {
-  background: linear-gradient(90deg, #2563eb 0%, #14b8a6 100%);
-  transform: scale(1.04);
-}
-
-.sign-toggle {
-  font-size: 1rem;
-  color: #333;
-}
-
-.sign-link {
-  background: none;
-  border: none;
-  color: #14b8a6;
-  font-weight: 700;
-  margin-left: 0.5rem;
-  cursor: pointer;
-  text-decoration: underline;
-  font-family: inherit;
-  font-size: 1rem;
   transition: color 0.2s;
+  font-family: 'Montserrat', 'Segoe UI', Arial, sans-serif;
 }
 
 .sign-link:hover {
-  color: #2563eb;
+  color: var(--secondary);
 }
 
-.sign-container {
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: linear-gradient(120deg, #14b8a6 0%, #2563eb 100%);
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
-.sign-card {
-  background: #fff;
-  padding: 2.5rem 2rem;
-  border-radius: 22px;
-  box-shadow: 0 8px 32px rgba(37,99,235,0.18);
-  min-width: 340px;
-  text-align: center;
-  position: relative;
-  animation: popIn 0.6s cubic-bezier(.86,-0.01,.15,1.01);
-}
-
-@keyframes popIn {
-  0% { transform: scale(0.8); opacity: 0; }
-  100% { transform: scale(1); opacity: 1; }
-}
-
-.sign-card h2 {
-  margin-bottom: 1.5rem;
-  font-family: 'Montserrat', 'Segoe UI', Arial, sans-serif;
-  font-weight: 900;
-  color: #2563eb;
-  font-size: 2rem;
-  letter-spacing: 1px;
-}
-
-.sign-input {
-  width: 100%;
-  padding: 0.8rem 1rem;
-  margin-bottom: 1rem;
-  border-radius: 10px;
-  border: 1px solid #e0e0e0;
-  font-size: 1rem;
-  font-family: 'Montserrat', 'Segoe UI', Arial, sans-serif;
-  background: #f7faff;
-  transition: border 0.2s;
-}
-
-.sign-input:focus {
-  border: 1.5px solid #14b8a6;
-  outline: none;
-}
-
-.sign-btn {
-  width: 100%;
-  padding: 0.8rem 1rem;
-  border-radius: 10px;
-  background: linear-gradient(90deg, #14b8a6 0%, #2563eb 100%);
-  color: #fff;
-  font-weight: 700;
-  font-size: 1.1rem;
-  border: none;
-  cursor: pointer;
-  margin-bottom: 1rem;
-  transition: background 0.2s, transform 0.2s;
-  box-shadow: 0 2px 8px rgba(37,99,235,0.10);
-}
-
-.sign-btn:hover {
-  background: linear-gradient(90deg, #2563eb 0%, #14b8a6 100%);
-  transform: scale(1.04);
-}
-
-.sign-toggle {
-  font-size: 1rem;
-  color: #333;
-}
-
-.sign-link {
-  background: none;
-  border: none;
-  color: #14b8a6;
-  font-weight: 700;
-  margin-left: 0.5rem;
-  cursor: pointer;
-  text-decoration: underline;
-  font-family: inherit;
-  font-size: 1rem;
-  transition: color 0.2s;
-}
-
-.sign-link:hover {
-  color: #2563eb;
+@media (max-width: 600px) {
+  .sign-container {
+    padding: 1rem;
+  }
+  .sign-card {
+    padding: 1.5rem;
+  }
+  .sign-card h2 {
+    font-size: 1.8rem;
+  }
+  .sign-input, .sign-btn, .sign-google-btn {
+    font-size: 0.95rem;
+    padding: 0.7rem;
+  }
 }
